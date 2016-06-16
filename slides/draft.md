@@ -111,7 +111,7 @@ But we've gotten closer...
 
 ---v
 
-And we've learned a few things.
+And we've learned a few things along the way.
 
 ---
 
@@ -143,7 +143,7 @@ Another kind of suffering?
 
 Code
 
-# 😨
+# 🙃
 
 ---v
 
@@ -318,7 +318,7 @@ Usability problems with services compound exponentially with scale
 
 Complexity growth curve of hand-written client libraries gets rough.
 
-&Theta;(n<sup>4</sup>) vs &Theta;(n<sup>4</sup>)
+&Theta;(n<sup>4</sup>)
 
 ---
 
@@ -392,10 +392,10 @@ Technically speaking...
 
 ## RESTful
 
-Covers most things important to an API consumer.
+Covers most things important to an API consumer
 
 * host
-* HTTP paths, + verbs
+* HTTP paths + verbs
 * parameters
 * security schemes
 * ACL/roles
@@ -451,7 +451,7 @@ anything related to swagger as "in swagger" or "using swagger".
 
 ## "paths" object
 
-This is where your routes, verbs, and parameters go.
+This is where your routes, verbs, and parameters go
 
 Note:
 Think about this as your application router. With `swagger-tools` it can be.
@@ -470,7 +470,7 @@ _combination of an HTTP path + verb_
 
 ## `operationId`
 
-Operation field to uniquely identify path/verb combinations.
+Operation field to uniquely identify path/verb combinations
 
 Note:
 Makes generated clients WAY nicer.
@@ -528,9 +528,9 @@ _reusable bits of a spec_
 
 ---v
 
-* definitions (abstract definitions)
+* abstract definitions
 * parameter definitions
-* responses defintions
+* responses definitions
 * security definitions
 
 Improves readability, saves typing, and can even be reused across multiple specs!
@@ -578,9 +578,9 @@ A definition in another file: `"$ref": "Search.json#/definition/searchTerm"`
 
 ---
 
-Online editor is SUPER useful
+## editor.swagger.io
 
-- editor.swagger.io
+Online editor is SUPER useful
 
 ---
 
@@ -613,7 +613,7 @@ Special headers. Defined in `SecurityDefinitions`, not parameters.
 
 ---
 
-Requires both a security definition **and** a security object.
+Require both a security definition **and** a security object.
 
 The names should match:
 
@@ -638,12 +638,12 @@ The names should match:
 ## A well written spec?
 
 * factors out common structures
-* reuses definitions with `$ref`s
+* reuses definitions with `$ref`
 * has good text descriptions
 
 ---
 
-## So why use it?
+## So why use Swagger?
 
 ---
 
@@ -653,7 +653,7 @@ The names should match:
 
 - consistent
 - interactive
-- reusable
+- you don't have to build it
 
 ---
 
@@ -697,7 +697,6 @@ When used to map routes to controllers and validate parameters, a swagger spec
 can become *the* canonical representation of a REST API.
 
 Note:
-
 Just like a REST API establishes a contract for interacting with an application,
 a Swagger spec establishes a contract for interacting with APIs in general.
 
@@ -708,8 +707,7 @@ that work together, regardless of platform, language
 
 ## OpenAPI is the new Swagger
 
-On January 1st, 2016 Swagger was been donated to the [Open API Initiative](https://openapis.org)
-and renamed OpenAPI Specification.
+On January 1st, 2016 Swagger was been donated to the [Open API Initiative](https://openapis.org).
 
 ---v
 
@@ -735,8 +733,6 @@ How we've addressed them (or plan to...)
 
 ---
 
-## Issues
-
 - learning curve + context
 - author/consumer mismatch
 - discovery, distribution
@@ -754,7 +750,7 @@ Fear of the unknown is real.
 
 ---
 
-## Talk
+## Talk about it
 
 - explain Swagger
 - differentiate specification from tooling
@@ -815,14 +811,16 @@ Aggregate internal specs into a simple docs app.
 
 Make it obvious. Make it current by default.
 
-Notes:
+Note:
 Express app + swagger UI is fine.
 
 ---v
 
-In `package.json`
+In documention app `package.json`:
 
-`swagger-specs: '*'`
+```
+"swagger-specs": "*"
+```
 
 One of the right times to always match latest!
 
@@ -845,12 +843,13 @@ Probably the thorniest part of the spec right now.
 
 ---v
 
-Reusing a `swagger-clients` instance? SecurityDefinitions seem like they can
-only be specified on per client, not per operation.
+Reusing a `swagger-clients` instance?
+
+SecurityDefinitions seem like they can only be specified on per client, not per operation.
 
 Define security schemes as securityDefinitions *AND* parameters.
 
-Notes:
+Note:
 Clients can be reused without fear of polluting user data across requests.
 
 ---
@@ -860,7 +859,7 @@ Clients can be reused without fear of polluting user data across requests.
 - `swagger-tools` mounts to `\`
 - `swagger-client` is generated async
 - code generation isn't terribly cheap
-- network hiccups when requesting a spec
+- avoid network hiccups when requesting a spec
 
 ---v
 
@@ -868,7 +867,7 @@ Clients can be reused without fear of polluting user data across requests.
 - wrap `swagger-client` to clean up interface
 - generate clients once and reuse across requests
 - consume specs as files, not urls
-- version specs and clients separately
+- version specs and client wrapper separately
 
 Note:
 App should be a deployable artifact!
@@ -894,8 +893,8 @@ if (req.swagger) {
 
 Swagger isn't new, but the tooling isn't mature either.
 
-- libraries in javascript are new
-- library *developers* are new to javascript
+- libraries in Javascript are new
+- library *developers* are new to Javascript
 - library docs are inconsistent (surprise!)
 
 ---
@@ -924,7 +923,7 @@ Where do we go from here?
 
 ## `swagger-client`
 
-The best client we've found, but needs some love.
+The best client in Javascript we've found, but needs some love.
 
 Primarily targeted for exploration of APIs in the browser.
 
@@ -964,7 +963,7 @@ Automatically factor out common structures into optimized definitions.
 
 ## Spec discovery
 
-App to serve specs and documentation for internal and external specs.
+App to serve specs and documentation for internal and public specs.
 
 ---
 
